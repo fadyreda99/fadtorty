@@ -1,0 +1,32 @@
+//routes
+
+//invoice controller
+Route::get('/edit_invoice/{id}', [InvoiceController::class ,'edit']);
+Route::get('Status_show/{id}',[InvoiceController::class, 'show'])->name('Status_show');
+Route::post('status_update/{id}',[InvoiceController::class, 'status_update'])->name('status_update');
+Route::get('invoice_paid', [InvoiceController::class, 'invoice_paid'])->name('invoice_paid');
+Route::get('invoice_unpaid', [InvoiceController::class, 'invoice_unpaid'])->name('invoice_unpaid');
+Route::get('invoice_partial', [InvoiceController::class, 'invoice_partial'])->name('invoice_partial');
+Route::get('print_invoice/{id}', [InvoiceController::class, 'print_invoice']);
+Route::get('export_invoices', [InvoiceController::class, 'export']);
+Route::get('markAsReadAll', [InvoiceController::class, 'markAsReadAll'])->name('markAsReadAll');
+Route::get('/category/{id}', [InvoiceController::class, 'getproducts']);
+
+//invoice details controller
+Route::get('/InvoicesDetails/{id}', [InvoicesDetailsController::class, 'edit']);
+Route::post('readNotify', [InvoicesDetailsController::class, 'readNotify'])->name('readNotify');
+Route::get('view_file/{invoice_number}/{file_name}', [InvoicesDetailsController::class, 'open_file']);
+Route::get('download/{invoice_number}/{file_name}', [InvoicesDetailsController::class, 'get_file']);
+Route::post('delete_file',[InvoicesDetailsController::class, 'destroy'])->name('delete_file');
+
+//invoice report controller
+Route::get('invoices_report', [InvoicesReportController::class, 'index'])->name('invoices_report');
+Route::post('search_invoices', [InvoicesReportController::class, 'search_invoices'])->name('search_invoices');
+
+//customer report controller
+Route::get('customers_report', [CustomerReportController::class, 'index'])->name('customers_report');
+Route::post('search_customers', [CustomerReportController::class, 'search_customers'])->name('search_customers');
+
+
+
+
